@@ -21,8 +21,18 @@ print("You have 6 incorrect guesses.\n")
 while attempts > 0 and "_" in display_word:
     print("Word:", " ".join(display_word))
     print("Attempts left:", attempts)
-    
+    print("Guessed letters:", ", ".join(guessed_letters))
+
     guess = input("Enter a letter: ").lower()
+
+    # ✅ Input validation
+    if len(guess) != 1:
+        print("⚠️ Please enter only ONE letter.\n")
+        continue
+
+    if not guess.isalpha():
+        print("⚠️ Please enter a LETTER (a–z only).\n")
+        continue
 
     # Check if already guessed
     if guess in guessed_letters:
